@@ -17,7 +17,6 @@ class FileStorage:
                     my_dict[cls_name_id] = cls_instance
                     return my_dict
                 return self.__objects
-        return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -58,7 +57,7 @@ class FileStorage:
 
         def delete(self, obj=None):
             if (obj == None):
-                pass
+                return
             else:
                 for key, value in self.__objects.items():
                     if obj is value:
