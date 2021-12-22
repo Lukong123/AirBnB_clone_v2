@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
        """ using args to adjust keyword arguments"""
-        try:
+       try:
             if not args:
                 raise SyntaxError()
             args_list = split(args)
@@ -134,11 +134,16 @@ class HBNBCommand(cmd.Cmd):
                 print("{}".format(obj.id))
             else:
                 raise SyntaxError()
-        except SyntaxError:
-            print("** class name missing **")
-        except NameError:
-            print("** class doesn't exist **")
-
+       except SyntaxError:
+           print("**Class name missing**")
+       except NameError:
+           print("**Class doesn't exist")
+           return
+       new_instance = HBNBCommand.classes[args]()
+       storage.save()
+       print(new_instance.id)
+       storage.save()
+       
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")
